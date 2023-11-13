@@ -1,0 +1,26 @@
+Первые изменения, что можно было двигаться дальше с началом недели.
+Этот код я ещё долго буду "причёсывать".
+
+Регистрация, логин, логаут и просмотр пользователя переписаны на DRF.
+
+
+Добавлены 3 новых библиотеки в requirements.txt.
+Вполне вероятно, djangorestframework-simplejwt мы уберём за ненадобностью,
+когда я добавлю регистрацию по соцсети посредстством drf_social_oauth2.
+
+Как мне известно, и sign и signup могут вызвать конфликты при использовании в Джанго 
+(также как User, login и auth, например).
+В этой связи приложение переименовано в нейтральное user_sign.
+
+В settings.py добавлены: 
+'corsheaders',
+вместо 'sign.apps.SignConfig' - 'user_sign.apps.UserSignConfig',
+'corsheaders.middleware.CorsMiddleware' в MIDDLEWARE,
+DEFAULT_AUTHENTICATION_CLASSES в REST_FRAMEWORK,
+а также AUTH_USER_MODEL,
+CORS_ORIGIN_ALLOW_ALL, и
+CORS_ALLOW_CREDENTIALS (в конце, на настоящий момент, кода)
+
+
+Я не стирал код в config/urls.py, templates, profile/views.py
+и других местах, который писали вы, когда это не препятствовало разработке напрямую.
